@@ -1,7 +1,9 @@
 version: "3.9"
 services:
   postgres:
-    image: . # Usar la imagen local
+    build:
+      context: .
+      dockerfile: Dockerfile # Usar la imagen local
     container_name: postgres-container
     ports:
       - "5432:5432"
