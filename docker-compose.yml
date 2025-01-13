@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   postgres:
-    image: postgres-with-extensions:latest # Usar la imagen local
+    image: . # Usar la imagen local
     container_name: postgres-container
     ports:
       - "5432:5432"
