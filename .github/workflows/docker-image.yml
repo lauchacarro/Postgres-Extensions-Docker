@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # Cambia esto si quieres disparar la acción desde otra rama.
+  workflow_dispatch:
 
 jobs:
   deploy:
