@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres-with-extensions:latest # Usar la imagen local
+    container_name: postgres-container
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypass
+      POSTGRES_DB: mydatabase
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    driver: local
