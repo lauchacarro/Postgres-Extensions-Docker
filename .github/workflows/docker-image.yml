@@ -1,0 +1,24 @@
+name: Publish Docker Compose to Private Registry
+
+on:
+  push:
+    branches:
+      - main  # Cambia esto si quieres disparar la acción desde otra rama.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Log in to Docker Registry
+      run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login registry.rukiatech.com -u "${{ secrets.REGISTRY_USERNAME }}" --password-stdin
+
+    - name: Build and push Docker image
+      run: |
+        docker build -t registry.rukiatech.com/rukia-postgres:latest .
+        docker push registry.rukiatech.com/rukia-postgres:latest
+
+
